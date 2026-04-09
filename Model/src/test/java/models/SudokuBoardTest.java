@@ -28,6 +28,14 @@ public class SudokuBoardTest {
         // printBoard(sudokuBoard);
     }
 
+    @Test
+    void testInvalidInput_DuplicateInRow() {
+        SudokuBoard board = new SudokuBoard(new BacktrackingSudokuSolver());
+        board.setField(0, 0, 5);
+        board.setField(1, 0, 5);
+        assertFalse(board.isValidSudoku());
+    }
+
     @RepeatedTest(10)
     void testFillBoardSubsequentCalls() {
         SudokuBoard sudokuBoard1 = new SudokuBoard(new BacktrackingSudokuSolver());
